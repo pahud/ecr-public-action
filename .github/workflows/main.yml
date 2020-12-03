@@ -10,6 +10,8 @@ jobs:
       - name: test
         id: test
         uses: pahud/ecr-public-action@beefcf7
+        env:
+          TAG_LATEST: public.ecr.aws/d7p2r8s3/busybox:latest
         # with:
         #   command: '--version'
 #     - name: diff
