@@ -19,13 +19,11 @@ jobs:
         id: build-and-push
         uses: pahud/ecr-public-action@415cd91
         env:
-          TAG_LATEST: public.ecr.aws/d7p2r8s3/busybox:latest
+          # TAG_LATEST: public.ecr.aws/d7p2r8s3/busybox:latest
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        # with:
-        #   command: '--version'
-#     - name: diff
-#       id: diff
-#       uses: pahud/awscdk-action@v0.1.0
-#       with:
-#         command: 'diff'
+          TAGS: ${{ inputs.tags }}
+        with:
+          tags: |
+            public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
+            public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha8 }}

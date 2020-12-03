@@ -1,7 +1,11 @@
 #!/bin/sh -l
 
 
-echo "TAG_LATEST=${TAG_LATEST}"
+# echo "TAG_LATEST=${TAG_LATEST}"
+
+echo "TAGS=${TAGS}"
+
+exit 0
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 

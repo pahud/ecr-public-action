@@ -2,9 +2,9 @@
 name: "CDK action"
 description: "CDK action"
 inputs:
-  tag:
-    description: "docker image tag"
-    required: false
+  tags:
+    description: "docker image tags"
+    required: true
 outputs:
   ouptut:
     description: "The command output"
