@@ -1,4 +1,4 @@
-name: CDK
+name: ECR
 on:
   workflow_dispatch: {}
 
@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: test
         id: test
-        uses: pahud/ecr-public-action
+        uses: pahud/ecr-public-action@792e472
         # with:
         #   command: '--version'
 #     - name: diff
