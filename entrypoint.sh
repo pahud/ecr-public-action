@@ -1,7 +1,7 @@
 #!/bin/sh -l
 
 echo "INPUT_TAGS=${INPUT_TAGS}"
-TAGS=($(echo $INPUT_TAGS | tr "\n" " "))
+TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
 echo "found TAGS=$TAGS"
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
