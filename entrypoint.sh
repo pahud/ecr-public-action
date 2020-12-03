@@ -5,7 +5,7 @@ TAGS=($(echo $INPUT_TAGS | tr "\n" " "))
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 
-docker build -t tmp
+docker build -t tmp .
 
 for t in ${TAGS}
 do
