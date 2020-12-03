@@ -15,7 +15,7 @@ jobs:
         run: echo "::set-output name=sha8::$(echo ${GITHUB_SHA} | cut -c1-8)"
       - name: Checkout
         uses: actions/checkout@v2
-      - name: test
+      - name: build and push
         id: build-and-push
         uses: pahud/ecr-public-action@415cd91
         env:
