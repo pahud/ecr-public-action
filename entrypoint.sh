@@ -1,17 +1,18 @@
 #!/bin/sh -l
 
-
 # echo "TAG_LATEST=${TAG_LATEST}"
-
-echo "TAGS=${INPUT_TAGS}"
-
-exit 0
+TAGS=($(echo $INPUT_TAGS | tr "\n" " "))
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 
-docker ps
-docker build -t ${TAG_LATEST} .
-docker push ${TAG_LATEST}
+docker build -t tmp
+
+for t in ${TAGS}
+do
+  docker tag tmp $t
+  docker push $t
+done
+
 
 # docker tag busybox:latest public.ecr.aws/d7p2r8s3/busybox:latest
 
