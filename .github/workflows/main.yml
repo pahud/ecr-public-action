@@ -9,7 +9,7 @@ jobs:
     steps:
       - name: test
         id: test
-        uses: pahud/ecr-public-action@64fb724
+        uses: pahud/ecr-public-action@beefcf7
         # with:
         #   command: '--version'
 #     - name: diff
