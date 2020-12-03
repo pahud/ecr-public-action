@@ -3,7 +3,7 @@
 
 # echo "TAG_LATEST=${TAG_LATEST}"
 
-echo "TAGS=${TAGS}"
+echo "TAGS=${INPUT_TAGS}"
 
 exit 0
 

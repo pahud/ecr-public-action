@@ -22,7 +22,6 @@ jobs:
           # TAG_LATEST: public.ecr.aws/d7p2r8s3/busybox:latest
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          TAGS: ${{ inputs.tags }}
         with:
           tags: |
             public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
