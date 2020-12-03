@@ -9,7 +9,9 @@ docker build -t tmp .
 
 for t in ${TAGS}
 do
+  echo "docker tag tmp $t"
   docker tag tmp $t
+  echo "docker push $t"
   docker push $t
 done
 
