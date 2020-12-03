@@ -1,6 +1,6 @@
 #!/bin/sh -l
 
-# echo "TAG_LATEST=${TAG_LATEST}"
+echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=($(echo $INPUT_TAGS | tr "\n" " "))
 echo "found TAGS=$TAGS"
 
