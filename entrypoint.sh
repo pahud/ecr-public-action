@@ -5,6 +5,7 @@ echo "TAG_LATEST=${TAG_LATEST}"
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 
+docker ps
 docker build -t ${TAG_LATEST} .
 docker push ${TAG_LATEST}
 
