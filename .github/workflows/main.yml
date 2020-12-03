@@ -1,0 +1,19 @@
+name: CDK
+on:
+  workflow_dispatch: {}
+
+jobs:
+  cdk_job:
+    runs-on: ubuntu-latest
+    name: ECR public action
+    steps:
+      - name: test
+        id: test
+        uses: pahud/ecr-public-action
+        # with:
+        #   command: '--version'
+#     - name: diff
+#       id: diff
+#       uses: pahud/awscdk-action@v0.1.0
+#       with:
+#         command: 'diff'
