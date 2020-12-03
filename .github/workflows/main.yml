@@ -16,7 +16,7 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: test
-        id: test
+        id: build and push to ecr public
         uses: pahud/ecr-public-action@415cd91
         env:
           TAG_LATEST: public.ecr.aws/d7p2r8s3/busybox:latest
