@@ -1,0 +1,15 @@
+# action.yml
+name: "CDK action"
+description: "CDK action"
+inputs:
+  tag:
+    description: "docker image tag"
+    required: false
+outputs:
+  ouptut:
+    description: "The command output"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+  # args:
+  #   - ${{ inputs.command }}
