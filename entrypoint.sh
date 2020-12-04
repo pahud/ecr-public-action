@@ -8,6 +8,8 @@ echo "found TAGS=$TAGS"
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 
+echo "docker build -t tmp -f ${DOCKERFILE} ${CONTEXT}"
+
 docker build -t tmp -f ${DOCKERFILE} ${CONTEXT}
 
 for t in ${TAGS}
