@@ -1,12 +1,14 @@
 #!/bin/sh -l
 
+CONTEXT=${INPUT_CONTEXT-.}
+DOCKERFILE=${INPUT_DOCKERFILE-Dockerfile}
 echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
 echo "found TAGS=$TAGS"
 
 aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws
 
-docker build -t tmp .
+docker build -t tmp -f ${DOCKERFILE} ${CONTEXT}
 
 for t in ${TAGS}
 do

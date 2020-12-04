@@ -5,6 +5,12 @@ inputs:
   tags:
     description: "docker image tags"
     required: true
+  context:
+    description: "context for the docker build"
+    required: false
+  dockerfile:
+    description: "The dockerfile. Default: Dockerfile"
+    required: false
 outputs:
   ouptut:
     description: "The command output"
