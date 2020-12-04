@@ -50,3 +50,10 @@ ecr_public:
           public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
           public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha8 }}
 ```
+
+
+# IAM User and Policies
+
+Create an AWS IAM User with `AmazonElasticContainerRegistryPublicPowerUser` managed policy only and configure its `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in the github secrets for this repository. See [Identity and Access Management for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/public/security-iam.html) and [Amazon ECR Public managed IAM policies](https://docs.aws.amazon.com/AmazonECR/latest/public/public-ecr-managed-policies.html) for more details.
+
+
