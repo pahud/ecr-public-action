@@ -5,12 +5,9 @@
 # sample
 
 ```yaml
-- name: build and push
+- name: Build and Push to ECR public
   id: build-and-push
   uses: pahud/ecr-public-action@12e969f
-  env:
-    AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-    AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
   with:
     context: .devcontainer
     dockerfile: ./.devcontainer/Dockerfile
