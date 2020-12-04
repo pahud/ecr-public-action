@@ -1,7 +1,11 @@
 #!/bin/sh -l
 
 CONTEXT=${INPUT_CONTEXT-.}
+[ -z $CONTEXT ] && CONTEXT='.'
+
 DOCKERFILE=${INPUT_DOCKERFILE-Dockerfile}
+[ -z $DOCKERFILE ] && DOCKERFILE='Dockerfile'
+
 echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
 echo "found TAGS=$TAGS"
