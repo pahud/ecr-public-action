@@ -23,11 +23,3 @@ do
   echo "docker push $t"
   docker push $t
 done
-
-
-# docker tag busybox:latest public.ecr.aws/d7p2r8s3/busybox:latest
-
-# docker push public.ecr.aws/d7p2r8s3/busybox:latest
-
-# npx cdk $@
-# echo "::set-output name=output::$output"
