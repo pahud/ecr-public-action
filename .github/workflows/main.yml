@@ -17,7 +17,7 @@ jobs:
         uses: actions/checkout@v2
       - name: build and push
         id: build-and-push
-        uses: pahud/ecr-public-action@5d5f66a
+        uses: pahud/ecr-public-action@1571fc9
         env:
           # TAG_LATEST: public.ecr.aws/d7p2r8s3/busybox:latest
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
