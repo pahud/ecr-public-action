@@ -9,8 +9,6 @@
   id: build-and-push
   uses: pahud/ecr-public-action@12e969f
   with:
-    context: .devcontainer
-    dockerfile: ./.devcontainer/Dockerfile
     tags: |
       public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
       public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha8 }}
