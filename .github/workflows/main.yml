@@ -31,7 +31,5 @@ jobs:
         uses: pahud/ecr-public-action@63aa2b1
         with:
           tags: |
-            #public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
-            #public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
-            public.ecr.aws/w4j7f3u2/${{ steps.repoName.outputs.reponame }}:latest
-            public.ecr.aws/w4j7f3u2/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
+            public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
+            public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
