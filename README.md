@@ -49,6 +49,44 @@ ecr_public:
 
 # IAM User and Policies
 
-Create an AWS IAM User with `AmazonElasticContainerRegistryPublicPowerUser` managed policy only and configure its `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in the github secrets for this repository. See [Identity and Access Management for Amazon ECR](https://docs.aws.amazon.com/AmazonECR/latest/public/security-iam.html) and [Amazon ECR Public managed IAM policies](https://docs.aws.amazon.com/AmazonECR/latest/public/public-ecr-managed-policies.html) for more details.
+Create an AWS IAM User with `AmazonElasticContainerRegistryPublicPowerUser` managed policy only and configure its `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` in the github secrets for this repository. 
+
+
+## To manage single repository only
+
+```json
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Sid": "ManageRepositoryContents",
+            "Effect": "Allow",
+            "Action": [
+                "ecr-public:DescribeImageTags",
+                "ecr-public:DescribeImages",
+                "ecr-public:InitiateLayerUpload",
+                "ecr-public:DescribeRepositories",
+                "ecr-public:UploadLayerPart",
+                "ecr-public:PutImage",
+                "ecr-public:CompleteLayerUpload",
+                "ecr-public:GetRepositoryPolicy",
+                "ecr-public:BatchCheckLayerAvailability"
+            ],
+            "Resource": "arn:aws:ecr-public::903779448426:repository/my-repo"
+        },
+        {
+            "Sid": "GetAuthorizationToken",
+            "Effect": "Allow",
+            "Action": [
+                "ecr-public:GetAuthorizationToken",
+                "sts:GetServiceBearerToken"
+            ],
+            "Resource": "*"
+        }
+    ]
+}
+```
+
+See [Amazon ECR Public managed IAM policies](https://docs.aws.amazon.com/AmazonECR/latest/public/public-ecr-managed-policies.html) and [Amazon ECR identity-based policy examples](https://docs.aws.amazon.com/AmazonECR/latest/public/security_iam_id-based-policy-examples.html) for more details.
 
 
