@@ -10,8 +10,10 @@ CREATE_REPO=${INPUT_CREATE_REPO-false}
 [ -z $CREATE_REPO ] && CREATE_REPO='false'
 
 echo "check repo exist ??"
-REPO=`echo ${github.repository} | cut -d '/' -f 2`
-aws ecr-public describe-repositories --region us-east-1 --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
+REPO=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2`
+if [ $CREATE_REPO -eq true ]; then
+        aws ecr-public describe-repositories --region us-east-1 --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
+fi
 
 echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
