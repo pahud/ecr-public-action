@@ -17,33 +17,41 @@
 # Full Sample
 
 ```yaml
-ecr_public:
-  name: ECR Public
-  runs-on: ubuntu-latest
-  steps:
-    - name: Get repo name
-      id: repoName
-      run: echo "::set-output name=reponame::$(echo ${{github.repository}} | cut -d '/' -f 2)"
-    - name: Get short SHA
-      id: sha
-      run: echo "::set-output name=sha7::$(echo ${GITHUB_SHA} | cut -c1-7)"
-    - name: Checkout
-      uses: actions/checkout@v2
-    - name: Configure AWS credentials
-      uses: aws-actions/configure-aws-credentials@v1
-      with:
-        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-east-1
-    - name: Build and Push to ECR public
-      id: build-and-push
-      uses: pahud/ecr-public-action@12e969f
-      with:
-        context: .devcontainer
-        dockerfile: ./.devcontainer/Dockerfile
-        tags: |
-          public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
-          public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
+name: ECR
+on:
+  push:
+    branches:
+      - main
+  schedule:
+    - cron: 37 * * * *
+  workflow_dispatch: {}
+
+jobs:
+  cdk_job:
+    runs-on: ubuntu-latest
+    name: ECR public action
+    steps:
+      - name: Get repo name
+        id: repoName
+        run: echo "::set-output name=reponame::$(echo ${{github.repository}} | cut -d '/' -f 2)"
+      - name: Get short SHA
+        id: sha
+        run: echo "::set-output name=sha7::$(echo ${GITHUB_SHA} | cut -c1-7)"
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Configure AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-1
+      - name: Build and Push to ECR public
+        id: build-and-push
+        uses: pahud/ecr-public-action@63aa2b1
+        with:
+          tags: |
+            public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
+            public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
 ```
 
 
@@ -72,7 +80,7 @@ Create an AWS IAM User with `AmazonElasticContainerRegistryPublicPowerUser` mana
                 "ecr-public:GetRepositoryPolicy",
                 "ecr-public:BatchCheckLayerAvailability"
             ],
-            "Resource": "arn:aws:ecr-public::903779448426:repository/my-repo"
+            "Resource": "arn:aws:ecr-public::123456789012:repository/my-repo"
         },
         {
             "Sid": "GetAuthorizationToken",
