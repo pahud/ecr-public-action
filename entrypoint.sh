@@ -6,9 +6,11 @@ CONTEXT=${INPUT_CONTEXT-.}
 DOCKERFILE=${INPUT_DOCKERFILE-Dockerfile}
 [ -z $DOCKERFILE ] && DOCKERFILE='Dockerfile'
 
+echo $INPUT_CREATE_REPO
 CREATE_REPO=${INPUT_CREATE_REPO-false}
 [ -z $CREATE_REPO ] && CREATE_REPO='false'
 
+echo $CREATE_REPO
 echo "check repo exist ??"
 REPO=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2`
 if [ $CREATE_REPO == true ]; then
