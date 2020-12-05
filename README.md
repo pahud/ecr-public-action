@@ -1,8 +1,18 @@
 # ecr-public-action
 `ecr-public-action` is a Github Action that allows you to docker `build`, `tag` and `publish` to **Amazon ECR Public** in the Github Action workflow.
 
+# `with` inputs
 
-# sample
+|   name    | description  | default | required |
+| ------ | ----| --- | -- |
+| tags | image tags | N/A | yes |
+| dockerfile | the dockerfile | Dockerfile | no |
+| context | the context for docker build | . | no |
+| create_repo | create the public ecr repository if not exist | false | no |
+
+
+
+# Sample
 
 ```yaml
 - name: Build and Push to ECR public
@@ -14,17 +24,9 @@
       public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
 ```
 
-# sample for create non exist ecr repo
+# 
 
-```yaml
-- name: Build and Push to ECR public
-  id: build-and-push
-  uses: pahud/ecr-public-action@12e969f
-  with:
-    create_repo: true
-    tags: |
-      public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
-      public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
+
 
 # Full Sample
 

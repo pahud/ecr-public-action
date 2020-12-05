@@ -3,16 +3,16 @@ name: "CDK action"
 description: "CDK action"
 inputs:
   tags:
-    description: "docker image tags"
+    description: "Docker image tags"
     required: true
   context:
-    description: "context for the docker build"
+    description: "Context for the docker build"
     required: false
   dockerfile:
     description: "The dockerfile. Default: Dockerfile"
     required: false
   create_repo:
-    description: "help you create public repo. Default: false"
+    description: "Whether to create the repo if not exist. Default: false"
     required: false
 outputs:
   ouptut:
@@ -20,5 +20,3 @@ outputs:
 runs:
   using: "docker"
   image: "Dockerfile"
-  # args:
-  #   - ${{ inputs.command }}
