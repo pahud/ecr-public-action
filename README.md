@@ -41,7 +41,7 @@ on:
   workflow_dispatch: {}
 
 jobs:
-  cdk_job:
+  ecr_public:
     runs-on: ubuntu-latest
     name: ECR public action
     steps:
