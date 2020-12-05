@@ -8,7 +8,7 @@
 | tags | image tags | N/A | yes |
 | dockerfile | the dockerfile | Dockerfile | no |
 | context | the context for docker build | . | no |
-| create_repo | create the public ecr repository if not exist | false | no |
+| create_repo | create the public ecr repository if not exist | null | no |
 
 
 
@@ -65,7 +65,7 @@ jobs:
         with:
           dockerfile: .devcontainer/Dockerfile
           context: .devcontainer
-          create_repo: true
+          create_repo: ecr_repo_name
           tags: |
             public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
             public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
@@ -96,6 +96,7 @@ Create an AWS IAM User with `AmazonElasticContainerRegistryPublicPowerUser` mana
                 "ecr-public:CompleteLayerUpload",
                 "ecr-public:GetRepositoryPolicy",
                 "ecr-public:BatchCheckLayerAvailability"
+                "ecr-public:CreateRepository"
             ],
             "Resource": "arn:aws:ecr-public::123456789012:repository/my-repo"
         },
