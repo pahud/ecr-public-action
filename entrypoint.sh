@@ -11,7 +11,7 @@ CREATE_REPO=${INPUT_CREATE_REPO-false}
 
 echo "check repo exist ??"
 REPO=`echo ${GITHUB_REPOSITORY} | cut -d '/' -f 2`
-if [ $CREATE_REPO -eq true ]; then
+if [ $CREATE_REPO == true ]; then
         aws ecr-public describe-repositories --region us-east-1 --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
 fi
 
