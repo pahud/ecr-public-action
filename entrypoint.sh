@@ -6,6 +6,13 @@ CONTEXT=${INPUT_CONTEXT-.}
 DOCKERFILE=${INPUT_DOCKERFILE-Dockerfile}
 [ -z $DOCKERFILE ] && DOCKERFILE='Dockerfile'
 
+CREATE_REPO=${INPUT_CREATE_REPO-false}
+[ -z $CREATE_REPO ] && CREATE_REPO='false'
+
+echo "check repo exist ??"
+REPO=`echo ${github.repository} | cut -d '/' -f 2`
+aws ecr-public describe-repositories --region us-east-1 --repository-names $REPO || aws ecr-public create-repository --repository-name $REPO
+
 echo "INPUT_TAGS=${INPUT_TAGS}"
 TAGS=$(echo $INPUT_TAGS | tr "\n" " ")
 echo "found TAGS=$TAGS"
