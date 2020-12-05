@@ -12,7 +12,7 @@ inputs:
     description: "The dockerfile. Default: Dockerfile"
     required: false
   create_repo:
-    description: "Whether to create the repo if not exist. Default: false"
+    description: "Whether to create the repo if not exist. Default: null"
     required: false
 outputs:
   ouptut:
