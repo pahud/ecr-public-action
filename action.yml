@@ -11,7 +11,7 @@ inputs:
   dockerfile:
     description: "The dockerfile. Default: Dockerfile"
     required: false
-  create-repo:
+  create_repo:
     description: "help you create public repo. Default: false"
     required: false
 outputs:
