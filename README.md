@@ -14,6 +14,18 @@
       public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
 ```
 
+# sample for create non exist ecr repo
+
+```yaml
+- name: Build and Push to ECR public
+  id: build-and-push
+  uses: pahud/ecr-public-action@12e969f
+  with:
+    create_repo: true
+    tags: |
+      public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
+      public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:${{ steps.sha.outputs.sha7 }}
+
 # Full Sample
 
 ```yaml
