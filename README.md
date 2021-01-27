@@ -17,7 +17,7 @@
 ```yaml
 - name: Build and Push to ECR public
   id: build-and-push
-  uses: pahud/ecr-public-action@8cd826d
+  uses: pahud/ecr-public-action@8cd826db40befb59b0cd0b60b22a7ba72d06a7f7
   with:
     tags: |
       public.ecr.aws/d7p2r8s3/${{ steps.repoName.outputs.reponame }}:latest
@@ -61,7 +61,7 @@ jobs:
           aws-region: us-east-1
       - name: Build and Push to ECR public
         id: build-and-push
-        uses: pahud/ecr-public-action@8cd826d
+        uses: pahud/ecr-public-action@8cd826db40befb59b0cd0b60b22a7ba72d06a7f7
         with:
           dockerfile: .devcontainer/Dockerfile
           context: .devcontainer
