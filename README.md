@@ -95,7 +95,7 @@ Create an AWS IAM User with `AmazonElasticContainerRegistryPublicPowerUser` mana
                 "ecr-public:PutImage",
                 "ecr-public:CompleteLayerUpload",
                 "ecr-public:GetRepositoryPolicy",
-                "ecr-public:BatchCheckLayerAvailability"
+                "ecr-public:BatchCheckLayerAvailability",
                 "ecr-public:CreateRepository"
             ],
             "Resource": "arn:aws:ecr-public::123456789012:repository/my-repo"
