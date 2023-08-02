@@ -1,6 +1,7 @@
-FROM public.ecr.aws/amazonlinux/amazonlinux:latest
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023
 
-RUN amazon-linux-extras install docker
+RUN dnf update -y
+RUN dnf install docker -y
 
 RUN yum install -y unzip
 
